@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS library_db;
-CREATE DATABASE library_db;
+DROP DATABASE IF EXISTS presents_db;
+CREATE DATABASE presents_db;
