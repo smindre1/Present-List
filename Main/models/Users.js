@@ -1,11 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our Location model
-class Location extends Model {}
+// create our Users model
+class Users extends Model {}
 
-// create fields/columns for Location model
-Location.init(
+// create fields/columns for Users model
+Users.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -13,9 +13,13 @@ Location.init(
       primaryKey: true,
       autoIncrement: true
     },
-    location_name: {
-      type: DataTypes.STRING,
-      allowNull: false
+    username: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
   },
   {
@@ -23,8 +27,8 @@ Location.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'location'
+    modelName: 'users'
   }
 );
 
-module.exports = Location;
+module.exports = Users;
