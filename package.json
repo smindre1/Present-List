@@ -9,7 +9,7 @@
     "watch": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Shane Mindreau, Joseph Aro, & Affan Kamal",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
