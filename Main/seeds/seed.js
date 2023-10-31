@@ -28,7 +28,7 @@ const seedDatabase = async () => {
       trip_budget: (Math.random() * 10000 + 1000).toFixed(2),
       traveller_amount: Math.floor(Math.random() * 10) + 1,
       traveller_id: randomTravellerId,
-      location_id: randomLocationId
+      location_id: randomLocationId,
     }).catch((err) => {
       // If there's an error, such as the same random pairing of `traveller.id` and `location.id` occurring and we get a constraint error, don't quit the Node process
       console.log(err);
