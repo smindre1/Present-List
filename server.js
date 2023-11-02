@@ -14,6 +14,20 @@ const app = express();
 
 const hbs = exphbs.create({});
 
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+
+const sess = {
+  secret: process.env.SESS_SECRET,
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+};
+
+app.use(session(sess));
+
 // Middleware for parsing JSON and urlencoded form data
 // Create the Handlebars.js engine object with custom helper functions
 //const hbs = exphbs.create({ helpers });

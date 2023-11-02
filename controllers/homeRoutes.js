@@ -7,8 +7,8 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-  // //This is for seeded data
-  /*try {
+  // This is for seeded data
+  try {
     const presentData = await Present.findAll({
       include: [
         {
@@ -26,8 +26,8 @@ router.get('/', async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
-  }*/
-});
+  }
+ });
 
 // router.get('/present/:id', async (req, res) => {
 //   try {
@@ -53,7 +53,7 @@ router.get('/', async (req, res) => {
 
 // router.get('/profile', withAuth, async (req, res) => {
 //   try {
-//     const userData = await User.findByPk(req.session.user_id, {
+//     const userData = await Users.findByPk(req.session.user_id, {
 //       attributes: { exclude: ['password'] },
 //       include: [{ model: Present }]
 //     });
@@ -69,13 +69,20 @@ router.get('/', async (req, res) => {
 //   }
 // });
 
-// router.get('/login', (req, res) => {
-//   if (req.session.logged_in) {
-//     res.redirect('/profile');
-//     return;
-//   }
+ router.get('/login', (req, res) => {
+  if (req.session.logged_in) {
+   res.redirect('/profile');
+   return;
+ }
+  res.render('login');
+ });
 
-//   res.render('login');
-// });
+ router.get('/signup', (req, res) => {
+  if (req.session.logged_in) {
+   res.redirect('/profile');
+    return;
+ }
+  res.render('signup');
+ });
 
 module.exports = router;
