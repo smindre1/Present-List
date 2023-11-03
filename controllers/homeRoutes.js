@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Users, Lists, List_Items } = require('../models');
+const { Users, Lists, List_Items } = require('./../models');
 const withAuth = require('../utils/auth');
 
 // router.get('/', async (req, res) => {
@@ -74,15 +74,24 @@ router.get('/login', (req, res) => {
 //The Users profile page is loaded if they are still, or just, logged in.
 router.get('/profile', withAuth, async (req, res) => {
   try {
+    const listData = await Lists.findAll({
+      where: {
+        user_id: req.session.user_id
+      }
+    });
+
+    const userLists = listData.get({ plain: true });
+
     const userData = await Users.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Present }]
+      include: [{ model: Users }]
     });
 
     const user = userData.get({ plain: true });
 
     res.render('profile', {
       ...user,
+      ...userLists,
       logged_in: true
     });
   } catch (err) {

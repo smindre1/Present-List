@@ -1,0 +1,12 @@
+<div id="userProfile">
+    <p>{{username}}</p>
+</div>
+<button id="newListButton">+</button>
+<details>
+    {{#if userLists}}
+        {{#each userLists as |list|}}
+            <button class="userListButton" listID="{{id}}" theme="{{theme}}">{{title}}</button>
+        {{/each}}
+    {{/if}}
+</details>
+<div id="displayList">Insert List Here</div>
