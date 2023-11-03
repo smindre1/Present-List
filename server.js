@@ -18,7 +18,7 @@ const hbs = exphbs.create({});
 // Create the Handlebars.js engine object with custom helper functions
 //const hbs = exphbs.create({ helpers });
 
-// Inform Express.js which template engine we're using
+// Inform Express.js that we are using the handlebars template engine.
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 

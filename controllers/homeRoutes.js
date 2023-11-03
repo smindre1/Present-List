@@ -1,33 +1,31 @@
 const router = require('express').Router();
-const { Present, Users } = require('../models');
+const { Users, Lists, List_Items } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
-   res.render('all');
-});
 
-router.get('/', async (req, res) => {
-  // //This is for seeded data
-  /*try {
-    const presentData = await Present.findAll({
-      include: [
-        {
-          model: Users,
-          attributes: ['name']
-        }
-      ]
-    });
+// router.get('/', async (req, res) => {
+//   //This is for seeded data
+//   try {
+//     const presentData = await Present.findAll(
+//       /*{
+//       include: [
+//         {
+//           model: Users,
+//           attributes: ['name']
+//         }
+//       ]
+//     }*/);
 
-    const present = presentData.map((present) => present.get({ plain: true }));
+//     const present = presentData.map((present) => present.get({ plain: true }));
 
-    res.render('main', {
-      present,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }*/
-});
+//     res.render('main', {
+//       present,
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // router.get('/present/:id', async (req, res) => {
 //   try {
@@ -51,31 +49,99 @@ router.get('/', async (req, res) => {
 //   }
 // });
 
-// router.get('/profile', withAuth, async (req, res) => {
-//   try {
-//     const userData = await User.findByPk(req.session.user_id, {
-//       attributes: { exclude: ['password'] },
-//       include: [{ model: Present }]
-//     });
+//------------Shane organized Routes for handlebar pages-----------------
 
-//     const user = userData.get({ plain: true });
+//The mainpage. Usually homepage.
+router.get('/', async (req, res) => {
+  //Should create a homepage to explain sites purpose. Replace login with new handlebar
+  res.render('login');
+});
 
-//     res.render('profile', {
-//       ...user,
-//       logged_in: true
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+//Loads the Signup Page View
+router.get('/signup', async (req, res) => {
+  res.render('signup');
+});
 
-// router.get('/login', (req, res) => {
-//   if (req.session.logged_in) {
-//     res.redirect('/profile');
-//     return;
-//   }
+//Loads /login page, where after loging in brings the user to the /profile Page
+router.get('/login', (req, res) => {
+  if (req.session.logged_in) {
+    //Redirects to /profile view when session is logged in
+    res.redirect('/profile');
+    return;
+  }
+  res.render('login');
+});
 
-//   res.render('login');
-// });
+//The Users profile page is loaded if they are still, or just, logged in.
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+    const userData = await Users.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Present }]
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('profile', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//Gets the User's List Data After they selected the list from their lists
+router.get('/List:id', async (req, res) => {
+  try {
+    const listData = await Lists.findAll(
+      {
+      include: [
+        {
+          model: Lists,
+          //attributes: ['name']
+        }
+      ]
+    });
+
+    const list = listData.map((list) => list.get({ plain: true }));
+
+    res.render('main', {
+      list,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//Gets the individual present data
+router.get('/Present/:id', async (req, res) => {
+  try {
+    const presentData = await List_Items.findByPk(req.params.id, {
+      include: [
+        {
+          model: List_Items,
+          //attributes: ['name']
+        }
+      ]
+    });
+
+    const present = presentData.get({ plain: true });
+
+    //What is '...' for?
+    res.render('present', {
+      ...present,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
+
+
 
 module.exports = router;
