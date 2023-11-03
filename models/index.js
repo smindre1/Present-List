@@ -3,6 +3,7 @@ const Lists = require('./Lists');
 const List_Items = require('./List_Items');
 
 
+
 Users.hasOne(Lists, {
   foreignKey: 'user_id',
   onDelete: 'CASCADE'
