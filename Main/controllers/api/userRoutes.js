@@ -2,7 +2,12 @@ const router = require('express').Router();
 const { Users } = require('../../models');
 
 router.post('/', async (req, res) => {
+<<<<<<< HEAD:controllers/api/userRoutes.js
   try {
+=======
+  try { 
+    console.log(req.body)
+>>>>>>> f4ff8e3fd9a4b82352c13226656744e2bb985d91:Main/controllers/api/userRoutes.js
     const userData = await Users.create(req.body);
 
     req.session.save(() => {

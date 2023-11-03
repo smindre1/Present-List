@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { Users, Lists, List_Items } = require('../models');
 const withAuth = require('../utils/auth');
 
-
 // router.get('/', async (req, res) => {
 //   //This is for seeded data
 //   try {
@@ -94,11 +93,10 @@ router.get('/profile', withAuth, async (req, res) => {
 //Gets the User's List Data After they selected the list from their lists
 router.get('/List:id', async (req, res) => {
   try {
-    const listData = await Lists.findAll(
-      {
+    const listData = await Lists.findAll({
       include: [
         {
-          model: Lists,
+          model: Lists
           //attributes: ['name']
         }
       ]
@@ -121,7 +119,7 @@ router.get('/Present/:id', async (req, res) => {
     const presentData = await List_Items.findByPk(req.params.id, {
       include: [
         {
-          model: List_Items,
+          model: List_Items
           //attributes: ['name']
         }
       ]
@@ -138,10 +136,5 @@ router.get('/Present/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
-
-
-
 
 module.exports = router;
