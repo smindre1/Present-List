@@ -74,24 +74,39 @@ router.get('/login', (req, res) => {
 //The Users profile page is loaded if they are still, or just, logged in.
 router.get('/profile', withAuth, async (req, res) => {
   try {
+    // const listData = await Lists.findByPk(1, {
+    //   // where: {
+    //   //   user_id: req.session.user_id
+    //   // }
+    // });
+    let userLists = {};
     const listData = await Lists.findAll({
       where: {
         user_id: req.session.user_id
-      }
+      },
+      plain: true
+    }).then(function(lists) {
+      console.dir('List Data (homeRoutes.js):');
+      console.dir(lists.dataValues);
+      userLists = lists.dataValues;
     });
+    console.dir('List Data 2 (homeRoutes.js):');
+    console.dir(userLists);
 
-    const userLists = listData.get({ plain: true });
+    // const userLists = listData.get({ plain: true });
 
     const userData = await Users.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Users }]
+      attributes: { exclude: ['password'] }
+      //include: [{ model: Users }] //This line caused a '{"name":"SequelizeEagerLoadingError"}'
     });
 
     const user = userData.get({ plain: true });
-
+    console.dir('User Data (homeRoutes.js):');
+    console.dir(user);
     res.render('profile', {
       ...user,
       ...userLists,
+      // ...listData,
       logged_in: true
     });
   } catch (err) {

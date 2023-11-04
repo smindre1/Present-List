@@ -2,6 +2,7 @@
     <p>{{username}}</p>
 </div>
 <button id="newListButton">+</button>
+<div><p>ListData: {{title}}</p></div> 
 <details>
     {{#if userLists}}
         {{#each userLists as |list|}}
@@ -10,3 +11,5 @@
     {{/if}}
 </details>
 <div id="displayList">Insert List Here</div>
+
+<script src="/js/profile.js"></script>
