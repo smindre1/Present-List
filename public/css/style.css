@@ -43,3 +43,19 @@ header {
   padding: 0px 40px 0px 5px;
 }
 
+img {
+  width: 30px;
+}
+
+details {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexRow {
+  display: flex;
+}
+
+.listSelection {
+  margin-left: 30px;
+}

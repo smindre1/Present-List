@@ -91,19 +91,11 @@ router.get('/profile', withAuth, async (req, res) => {
       },
       raw: true,
       nest: true
-      // plain: true
     }).then(function(everyList) {
-      console.dir('List Data (homeRoutes.js):');
-      console.dir(everyList);
       lists = everyList;
-      // userLists = lists.dataValues;
-      //userLists = lists.get({ plain: true });
     });
 
-    lists = {lists: lists};
-
-    // const lists = listData.get({ plain: true });
-    console.dir('Lists Data 2 (homeRoutes.js):');
+    console.dir('Lists Data (homeRoutes.js):');
     console.dir(lists);
 
     const userData = await Users.findByPk(req.session.user_id, {
@@ -115,9 +107,8 @@ router.get('/profile', withAuth, async (req, res) => {
     console.dir(user);
     console.dir("-------------------------------")
     res.render('profile', {
-      ...lists,
+      lists,
       ...user,
-      // ...listData,
       logged_in: true
     });
   } catch (err) {

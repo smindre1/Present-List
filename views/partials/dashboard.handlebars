@@ -1,11 +1,20 @@
 
 <header>
 <details>
-    <summary><img src="../../images/profile-image.png" alt="profile_pic">{{username}}</summary>
+    <summary><img src="./images/profile-image.png" alt="profile_pic">{{username}}</summary>
     <ul class="li-inline nav-item"><a href="#" id="logout">Logout</a></ul>
 </details>
 <h1>The Present List</h1>
-<button id="newListButton">+</button>
+<div class="flexRow">
+    <button id="newListButton">+</button>
+    <details class="listSelection">
+        <summary>Lists</summary>
+        {{#each lists}}
+            <a href="/lists/{{id}}" ListId="{{id}}" theme="{{theme}}">{{title}}</a>
+        {{/each}}
+    </details>
+</div>
+
 </header>
 
 <nav class="navbar">
@@ -13,6 +22,7 @@
     <li class="li-inline nav-item"><a href="/">Home</a></li>
     <li class="li-inline nav-item"><a href="/dashboard">Dashboard</a></li>
     <li class="li-inline nav-item"><a href="/login">Login</a></li>
-    
 </ul>
 </nav>
+
+<script src="/js/profile.js"></script>
