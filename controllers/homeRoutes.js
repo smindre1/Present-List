@@ -50,10 +50,19 @@ const withAuth = require('../utils/auth');
 
 //------------Shane organized Routes for handlebar pages-----------------
 
+const convertData = (rawText, keyName) => {
+  let newArray = [];
+  for (i = 0; i < rawText.length; i++) {
+    newArray.push(keyName);
+  }
+  console.dir('New Array Data:');
+  console.dir(newArray);
+};
+
 //The mainpage. Usually homepage.
 router.get('/', async (req, res) => {
   //Should create a homepage to explain sites purpose. Replace login with new handlebar
-  res.render('login');
+  res.render('homepage');
 });
 
 //Loads the Signup Page View
@@ -74,38 +83,40 @@ router.get('/login', (req, res) => {
 //The Users profile page is loaded if they are still, or just, logged in.
 router.get('/profile', withAuth, async (req, res) => {
   try {
-    // const listData = await Lists.findByPk(1, {
-    //   // where: {
-    //   //   user_id: req.session.user_id
-    //   // }
-    // });
-    let userLists = {};
+
+    let lists;
     const listData = await Lists.findAll({
       where: {
         user_id: req.session.user_id
       },
-      plain: true
-    }).then(function(lists) {
+      raw: true,
+      nest: true
+      // plain: true
+    }).then(function(everyList) {
       console.dir('List Data (homeRoutes.js):');
-      console.dir(lists.dataValues);
-      userLists = lists.dataValues;
+      console.dir(everyList);
+      lists = everyList;
+      // userLists = lists.dataValues;
+      //userLists = lists.get({ plain: true });
     });
-    console.dir('List Data 2 (homeRoutes.js):');
-    console.dir(userLists);
 
-    // const userLists = listData.get({ plain: true });
+    lists = {lists: lists};
+
+    // const lists = listData.get({ plain: true });
+    console.dir('Lists Data 2 (homeRoutes.js):');
+    console.dir(lists);
 
     const userData = await Users.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] }
-      //include: [{ model: Users }] //This line caused a '{"name":"SequelizeEagerLoadingError"}'
     });
 
     const user = userData.get({ plain: true });
     console.dir('User Data (homeRoutes.js):');
     console.dir(user);
+    console.dir("-------------------------------")
     res.render('profile', {
+      ...lists,
       ...user,
-      ...userLists,
       // ...listData,
       logged_in: true
     });

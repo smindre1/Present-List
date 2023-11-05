@@ -1,15 +1,15 @@
-<div id="userProfile">
-    <p>{{username}}</p>
+{{>dashboard}}
+<div>
+    {{!-- {{#each lists |value key|}}
+        <p>{{key}}: {{value}}</p>
+    {{/each}} --}}
+    {{!-- {{#if lists != [] }} --}}
+    {{!-- {{#each lists}}
+        {{log this}} --}}
+        {{!-- <button class="userListButton">{{title}}</button> --}}
+    {{!-- {{/each}} --}}
+    {{!-- {{/if}} --}}
 </div>
-<button id="newListButton">+</button>
-<div><p>ListData: {{title}}</p></div> 
-<details>
-    {{#if userLists}}
-        {{#each userLists as |list|}}
-            <button class="userListButton" listID="{{id}}" theme="{{theme}}">{{title}}</button>
-        {{/each}}
-    {{/if}}
-</details>
-<div id="displayList">Insert List Here</div>
+{{!-- <div id="displayList">Insert List Here: {{title}}</div> --}}
 
 <script src="/js/profile.js"></script>

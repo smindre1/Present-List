@@ -25,6 +25,7 @@
 
 body {
   background-color: green;
+  margin: 0px;
 }
 
 footer {
@@ -33,3 +34,12 @@ footer {
   justify-content: center;
   margin-top: 10vh;
 }
+
+header {
+  box-shadow: 0px 0px 10px 2px darkgreen;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0px 40px 0px 5px;
+}
+
