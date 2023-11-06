@@ -24,7 +24,7 @@
 } */
 
 body {
-  background-color: green;
+  background-color: #107d01;
   margin: 0px;
 }
 
@@ -59,3 +59,51 @@ details {
 .listSelection {
   margin-left: 30px;
 }
+
+/* Erases the arrows on html <detail> tags */
+details > summary {
+  list-style: none;
+}
+/* Erases the arrows on html <detail> tags */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Creates the display for html <details> tags initial display */
+.menuDisplay {
+  background-color: #38cf4c;
+  border-radius: 5px;
+}
+
+.menuTitle {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+/* The css for the profile image silhoutte displayed on the top left of the profile page */
+.profileImage {
+  margin: 0 10px 0 0;
+}
+
+.clickableEvent {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  padding: 5px 20px 5px 10px;
+  background-color: #47a603;
+}
+
+/* The default css for the <a> html tag are being redefined for asthetics */
+a:link, a:visited {
+  color: whitesmoke;
+  text-decoration: none;
+  cursor: auto;
+  font-weight: bold;
+  font-size: 18px;
+}
+/* The default css for the clicked <a> html tag are being redefined for asthetics */
+a:link:active, a:visited:active {
+  color: (internal value);
+  font-weight: normal;
+}
+

@@ -1,16 +1,19 @@
 
 <header>
-<details>
-    <summary><img src="./images/profile-image.png" alt="profile_pic">{{username}}</summary>
-    <ul class="li-inline nav-item"><a href="#" id="logout">Logout</a></ul>
+<details class="menuDisplay">
+    <summary class="menuTitle">
+        <img class="profileImage" src="./images/profile-image.png" alt="profile_pic">
+        {{username}}
+    </summary>
+    <a class="clickableEvent" href="#" id="logout">Logout</a>
 </details>
 <h1>The Present List</h1>
 <div class="flexRow">
     <button id="newListButton">+</button>
-    <details class="listSelection">
-        <summary>Lists</summary>
+    <details class="listSelection menuDisplay">
+        <summary class="menuTitle">Lists</summary>
         {{#each lists}}
-            <a href="/lists/{{id}}" ListId="{{id}}" theme="{{theme}}">{{title}}</a>
+            <a class="clickableEvent" href="/lists/{{id}}" ListId="{{id}}" theme="{{theme}}">{{title}}</a>
         {{/each}}
     </details>
 </div>
