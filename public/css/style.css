@@ -1,0 +1,109 @@
+/* header, .project:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+.no-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #1b89bc;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.no-button:hover {
+  color: #065b83;
+  text-decoration: underline;
+}
+
+.dollar-amount {
+  color: #056605;
+  font-weight: bold;
+  margin-left: -5px;
+} */
+
+body {
+  background-color: #107d01;
+  margin: 0px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+header {
+  box-shadow: 0px 0px 10px 2px darkgreen;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0px 40px 0px 5px;
+}
+
+img {
+  width: 30px;
+}
+
+details {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexRow {
+  display: flex;
+}
+
+.listSelection {
+  margin-left: 30px;
+}
+
+/* Erases the arrows on html <detail> tags */
+details > summary {
+  list-style: none;
+}
+/* Erases the arrows on html <detail> tags */
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Creates the display for html <details> tags initial display */
+.menuDisplay {
+  background-color: #38cf4c;
+  border-radius: 5px;
+}
+
+.menuTitle {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+/* The css for the profile image silhoutte displayed on the top left of the profile page */
+.profileImage {
+  margin: 0 10px 0 0;
+}
+
+.clickableEvent {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  padding: 5px 20px 5px 10px;
+  background-color: #47a603;
+}
+
+/* The default css for the <a> html tag are being redefined for asthetics */
+a:link, a:visited {
+  color: whitesmoke;
+  text-decoration: none;
+  cursor: auto;
+  font-weight: bold;
+  font-size: 18px;
+}
+/* The default css for the clicked <a> html tag are being redefined for asthetics */
+a:link:active, a:visited:active {
+  color: (internal value);
+  font-weight: normal;
+}
+
