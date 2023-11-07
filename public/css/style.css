@@ -130,3 +130,29 @@ textarea {
   justify-content: center;
   align-items: center;
 }
+
+#newListButton {
+  border: none;
+  color: whitesmoke;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 48px;
+  font-weight: 900;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px 0 0 0;
+}
+
+.listTitle {
+  border: none;
+  resize: none;
+  background-color: #47a603;
+  text-align: center;
+  margin: 0 0 15px 0;
+  font-size: 32px;
+  font-weight: 500;
+  padding: 5px;
+}

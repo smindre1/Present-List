@@ -17,9 +17,10 @@ router.post('/', withAuth, async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const presentData = await Present.destroy({
+
+    const presentData = await Lists.destroy({
       where: {
-        id: req.params.id,
+        listid: req.params.id,
         user_id: req.session.user_id,
       },
     });
