@@ -131,6 +131,7 @@ textarea {
   align-items: center;
 }
 
+
 #newListButton {
   border: none;
   color: whitesmoke;
@@ -155,4 +156,9 @@ textarea {
   font-size: 32px;
   font-weight: 500;
   padding: 5px;
+
+
+.hide{
+  display: none;
+
 }
