@@ -28,7 +28,7 @@ const displayList = async (event) => {
     listTitle.setAttribute('id', 'listTitle');
     listTitle.setAttribute('class', 'listTitle');
     listTitle.setAttribute('listId', `${id}`);
-    listTitle.setAttribute('placeholder', `${selectedList}`);
+    listTitle.setAttribute('value', `${selectedList}`);
     table.appendChild(listTitle);
 
     //Creates the div container for all the user's list column titles
@@ -86,63 +86,24 @@ const displayList = async (event) => {
 
     const saveButton = document.querySelector('#saveBtn');
     saveButton.addEventListener('click', saveCurrentList);
+    
+    //
+    // const container = document.querySelector('#newRowContainer');
+    // let newRow = document.createElement('button');
+    // newRow.setAttribute('id', 'newRowBtn');
+    // newRow.setAttribute('class', `newRowBtn`);
+    // newRow.setAttribute('NumOfRows', `${data.length}`);
+    // newRow.innerHTML = 'Save';
+    // container.appendChild(newRow);
+
+
+    // const saveButton = document.querySelector('#saveBtn');
+    // saveButton.addEventListener('click', saveCurrentList);
   } else {
     alert('Failed to create project');
   }
 };
 //////////////////////////////////////
-const updateList = async (event) => {
-  event.preventDefault();
-
-  const name = document.querySelector('#project-name').value.trim();
-  const needed_funding = document
-    .querySelector('#project-funding')
-    .value.trim();
-  const description = document.querySelector('#project-desc').value.trim();
-
-  if (name && needed_funding && description) {
-    const response = await fetch(`/api/projects`, {
-      method: 'POST',
-      body: JSON.stringify({ name, needed_funding, description }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert('Failed to create project');
-    }
-  }
-};
-
-const updateListItems = async (event) => {
-  event.preventDefault();
-
-  const name = document.querySelector('#project-name').value.trim();
-  const needed_funding = document
-    .querySelector('#project-funding')
-    .value.trim();
-  const description = document.querySelector('#project-desc').value.trim();
-
-  if (name && needed_funding && description) {
-    const response = await fetch(`/api/projects`, {
-      method: 'POST',
-      body: JSON.stringify({ name, needed_funding, description }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert('Failed to create project');
-    }
-  }
-};
-
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
@@ -165,17 +126,19 @@ ListButtons.forEach(function(button) {
   button.addEventListener('click', displayList);
 });
 
-// document
-//   .querySelector('.project-list')
-//   .addEventListener('click', delButtonHandler);
-
 //The function for the save button
 const saveCurrentList = async (event) => {
   event.preventDefault();
 
+  const title = document.querySelector('#listTitle');
+  
+
+
   let body = [];
   const NumOfRows = event.currentTarget.getAttribute('numofrows')
+  const listNumber = title.getAttribute('listid');
   body.push({ NumOfRows: NumOfRows });
+  body.push({title: title.value, listId: listNumber});
   for (i = 0; i < NumOfRows; i++) {
     const id = document.querySelector(`#row-${i}`);
     const listId = id.getAttribute("list-item");
@@ -195,10 +158,6 @@ const saveCurrentList = async (event) => {
       date: dateValue
     });
   }
-
-    // console.log('body');
-    // console.log(JSON.stringify(body));
-
 
   const response = await fetch('/api/save', {
     method: 'POST',
