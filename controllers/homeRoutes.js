@@ -26,29 +26,7 @@ const withAuth = require('../utils/auth');
 //   }
 // });
 
-// router.get('/present/:id', async (req, res) => {
-//   try {
-//     const presentData = await Present.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: Users,
-//           attributes: ['name']
-//         }
-//       ]
-//     });
-
-//     const present = presentData.get({ plain: true });
-
-//     res.render('present', {
-//       ...present,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-//------------Shane organized Routes for handlebar pages-----------------
+//------------Organized Routes for handlebar pages-----------------
 
 const convertData = (rawText, keyName) => {
   let newArray = [];
@@ -83,7 +61,6 @@ router.get('/login', (req, res) => {
 //The Users profile page is loaded if they are still, or just, logged in.
 router.get('/profile', withAuth, async (req, res) => {
   try {
-
     let lists;
     const listData = await Lists.findAll({
       where: {
@@ -105,7 +82,7 @@ router.get('/profile', withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
     console.dir('User Data (homeRoutes.js):');
     console.dir(user);
-    console.dir("-------------------------------")
+    console.dir('-------------------------------');
     res.render('profile', {
       lists,
       ...user,
@@ -117,50 +94,48 @@ router.get('/profile', withAuth, async (req, res) => {
 });
 
 //Gets the User's List Data After they selected the list from their lists
-router.get('/List:id', async (req, res) => {
+router.get('/List/:id', async (req, res) => {
   try {
-    const listData = await Lists.findAll({
-      include: [
-        {
-          model: Lists
-          //attributes: ['name']
-        }
-      ]
+    const listData = await List_Items.findAll({
+      where: {
+        list_id: req.params.id
+      }
     });
 
-    const list = listData.map((list) => list.get({ plain: true }));
+    //const listD = listData.map((list) => list.get({ plain: true }));
+    console.log('list Data', listData);
+    res.json(listData);
 
-    res.render('main', {
-      list,
+    /*res.render('profile', {
+      listData,
       logged_in: req.session.logged_in
-    });
+    });*/
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 //Gets the individual present data
-router.get('/Present/:id', async (req, res) => {
-  try {
-    const presentData = await List_Items.findByPk(req.params.id, {
-      include: [
-        {
-          model: List_Items
-          //attributes: ['name']
-        }
-      ]
-    });
+// router.get('/Present/:id', async (req, res) => {
+//   try {
+//     const presentData = await List_Items.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: List_Items
+//           //attributes: ['name']
+//         }
+//       ]
+//     });
 
-    const present = presentData.get({ plain: true });
+//     const present = presentData.get({ plain: true });
 
-    //What is '...' for?
-    res.render('present', {
-      ...present,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+//     res.render('present', {
+//       ...present,
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
