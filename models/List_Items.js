@@ -25,10 +25,10 @@ List_Items.init(
         type: DataTypes.STRING,
         allowNull: true
     },
-    price: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
+    // price: {
+    //     type: DataTypes.STRING,
+    //     allowNull: true
+    // },
     date: {
         type: DataTypes.STRING,
         allowNull: true

@@ -94,7 +94,8 @@ details summary::-webkit-details-marker {
 }
 
 /* The default css for the <a> html tag are being redefined for asthetics */
-a:link, a:visited {
+a:link,
+a:visited {
   color: whitesmoke;
   text-decoration: none;
   cursor: auto;
@@ -102,8 +103,30 @@ a:link, a:visited {
   font-size: 18px;
 }
 /* The default css for the clicked <a> html tag are being redefined for asthetics */
-a:link:active, a:visited:active {
+a:link:active,
+a:visited:active {
   color: (internal value);
   font-weight: normal;
 }
 
+/* The column title spaces for each list */
+#column-title {
+  margin: 0;
+  width: 128.5px;
+  background-color: #47a603;
+  display: flex;
+  justify-content: start;
+}
+
+/* The text area for each list item quality/section */
+textarea {
+  border-bottom: black 5px;
+  border-style: solid;
+}
+
+#listTable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
