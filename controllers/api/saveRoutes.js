@@ -24,7 +24,9 @@ router.post('/', async (req, res) => {
     lists.set({
       title: title.title
     });
+    // document.location.replace('/profile');
     await lists.save();
+    
   } catch (err) {
     console.log(err);
     res.status(400).json(err);

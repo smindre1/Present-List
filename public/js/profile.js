@@ -10,7 +10,7 @@ const displayList = async (event) => {
   if (response.ok) {
     console.log('response 200');
     const data = await response.json();
-    console.log("data", data);
+    console.log('data', data);
 
     let table = document.querySelector('#listTable');
     //Clears any previous list displayed
@@ -86,23 +86,41 @@ const displayList = async (event) => {
 
     const saveButton = document.querySelector('#saveBtn');
     saveButton.addEventListener('click', saveCurrentList);
-    
+
     //
-    // const container = document.querySelector('#newRowContainer');
-    // let newRow = document.createElement('button');
-    // newRow.setAttribute('id', 'newRowBtn');
-    // newRow.setAttribute('class', `newRowBtn`);
-    // newRow.setAttribute('NumOfRows', `${data.length}`);
-    // newRow.innerHTML = 'Save';
-    // container.appendChild(newRow);
+    const container = document.querySelector('#listTable');
+    let newRow = document.createElement('button');
+    newRow.setAttribute('id', 'newRowBtn');
+    newRow.setAttribute('class', `newRowBtn`);
+    newRow.setAttribute('listId', `${id}`);
+    newRow.innerHTML = 'New Row';
+    container.appendChild(newRow);
 
-
-    // const saveButton = document.querySelector('#saveBtn');
-    // saveButton.addEventListener('click', saveCurrentList);
+    const newRowBtn = document.querySelector('#newRowBtn');
+    newRowBtn.addEventListener('click', addNewRow);
   } else {
     alert('Failed to create project');
   }
 };
+
+//Adds new row to list
+const addNewRow = async (event) => {
+  event.preventDefault();
+  const listId = document.querySelector('#listTitle');
+  const listNumber = listId.getAttribute('listid');
+  const body = { list_id: listNumber };
+  const response = await fetch('/api/newRow', {
+    method: 'POST',
+    body: JSON.stringify(body),
+    headers: { 'Content-Type': 'application/json' }
+  });
+  if (response.ok) {
+    // document.location.replace('/profile');
+  } else {
+    alert('Failed to delete project');
+  }
+};
+
 //////////////////////////////////////
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
@@ -131,17 +149,15 @@ const saveCurrentList = async (event) => {
   event.preventDefault();
 
   const title = document.querySelector('#listTitle');
-  
-
 
   let body = [];
-  const NumOfRows = event.currentTarget.getAttribute('numofrows')
+  const NumOfRows = event.currentTarget.getAttribute('numofrows');
   const listNumber = title.getAttribute('listid');
   body.push({ NumOfRows: NumOfRows });
-  body.push({title: title.value, listId: listNumber});
+  body.push({ title: title.value, listId: listNumber });
   for (i = 0; i < NumOfRows; i++) {
     const id = document.querySelector(`#row-${i}`);
-    const listId = id.getAttribute("list-item");
+    const listId = id.getAttribute('list-item');
     const recipient = document.querySelector(`#recipient-${i}`);
     const recipientValue = recipient.value;
     const price = document.querySelector(`#price-${i}`);
