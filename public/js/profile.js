@@ -13,9 +13,7 @@ const getListData = async (listId) => {
   const response = await fetch(`/List/${listId}`);
 
   if (response.ok) {
-    console.log('response 200');
     const data = await response.json();
-    console.log('data', data);
     return data;
   } else {
     alert('Failed to create project');
@@ -35,7 +33,7 @@ const buildListDisplay = async (id, selectedList) => {
   //This function gets the selected list's data
   const data = await getListData(id);
 
-  let table = document.querySelector('#listTable');
+  const table = document.querySelector('#listTable');
   //Clears any previous list displayed
   clearList();
 
@@ -116,16 +114,26 @@ const buildListDisplay = async (id, selectedList) => {
   saveButton.addEventListener('click', saveCurrentList);
 
   //Creates a button that makes new rows for the current list
-  const container = document.querySelector('#listTable');
   let newRow = document.createElement('button');
   newRow.setAttribute('id', 'newRowBtn');
   newRow.setAttribute('class', `newRowBtn`);
   newRow.setAttribute('listId', `${id}`);
   newRow.innerHTML = 'New Row';
-  container.appendChild(newRow);
+  table.appendChild(newRow);
 
   const newRowBtn = document.querySelector('#newRowBtn');
   newRowBtn.addEventListener('click', addNewRow);
+
+  //Creates a button that delete the current list
+  let delList = document.createElement('button');
+  delList.setAttribute('id', 'delList');
+  delList.setAttribute('class', 'delList');
+  delList.setAttribute('listId', `${id}`);
+  delList.innerHTML = 'Delete Current List';
+  table.appendChild(delList);
+
+  const deleteList = document.querySelector('#delList');
+  deleteList.addEventListener('click', deleteCurrentList);
 };
 
 //The function to add a new row to the current list
@@ -149,7 +157,7 @@ const addNewRow = async (event) => {
   }
 };
 
-//////////////////////////////////////
+//This is an event function where when the delete button for a row is pressed this function will delete that row/list-item
 const deleteRow = async (event) => {
   event.preventDefault();
   const id = event.target.getAttribute('list-item');
@@ -163,7 +171,7 @@ const deleteRow = async (event) => {
   if (response.ok) {
     buildListDisplay(listNumber, selectedList);
   } else {
-    alert('Failed to delete project');
+    alert('Failed to delete row');
   }
 };
 
@@ -214,5 +222,20 @@ const saveCurrentList = async (event) => {
     console.log('response 200');
   } else {
     alert(response.statusText);
+  }
+};
+
+const deleteCurrentList = async (event) => {
+  // event.preventDefault();
+  const id = event.target.getAttribute('listId');
+  const response = await fetch(`/api/deleteList/${id}`, {
+    method: 'DELETE'
+  });
+
+  if (response.ok) {
+    //reloads the current page so that the deleted list is removed from the list of list titles
+    location.reload();
+  } else {
+    alert('Failed to delete current list');
   }
 };

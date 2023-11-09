@@ -162,10 +162,10 @@ textarea {
   display: none;
 
 }
-
+/* The styling for the delete button of each row in a list */
 .rowDeleteBtn {
   width: 30px;
-  background-color: red;
+  background-color: #c90e0e ;
   background-image: url('../images/Trash-Can-Clip-Art.png');
   background-size: contain;
   background-repeat: no-repeat;

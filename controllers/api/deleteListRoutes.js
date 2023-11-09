@@ -1,22 +1,22 @@
 const router = require('express').Router();
-const { List_Items } = require('../../models');
+const { Lists } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-//Deletes a list item based on the list item's id
+//Deletes a list based on the list's id
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const listItem = await List_Items.destroy({
+    const list = await Lists.destroy({
       where: {
         id: req.params.id
       }
     });
 
-    if (!listItem) {
-      res.status(404).json({ message: 'No project found with this id!' });
+    if (!list) {
+      res.status(404).json({ message: 'No list found with this id!' });
       return;
     }
 
-    res.status(200).json(listItem);
+    res.status(200).json(list);
   } catch (err) {
     res.status(500).json(err);
   }
