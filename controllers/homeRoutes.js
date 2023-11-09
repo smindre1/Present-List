@@ -45,9 +45,9 @@ router.get('/profile', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-    console.dir('User Data (homeRoutes.js):');
-    console.dir(user);
-    console.dir('-------------------------------');
+    // console.dir('User Data (homeRoutes.js):');
+    // console.dir(user);
+    // console.dir('-------------------------------');
     res.render('profile', {
       lists,
       ...user,

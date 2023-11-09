@@ -8,7 +8,6 @@ router.post('/', async (req, res) => {
     console.log(listBody);
     const newList = await Lists.create(listBody);
       res.status(200).json(newList);
-    // });
 
   } catch (err) {
     console.log(err);

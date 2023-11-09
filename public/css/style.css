@@ -1,28 +1,3 @@
-/* header, .project:not(:last-child) {
-  border-bottom: 1px solid #ccc;
-}
-
-.no-button {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: #1b89bc;
-  text-decoration: none;
-  font-size: 100%;
-}
-
-.no-button:hover {
-  color: #065b83;
-  text-decoration: underline;
-}
-
-.dollar-amount {
-  color: #056605;
-  font-weight: bold;
-  margin-left: -5px;
-} */
-
 body {
   background-color: #107d01;
   margin: 0px;
@@ -42,7 +17,7 @@ header {
   justify-content: space-between;
   padding: 0px 40px 0px 5px;
 }
-
+/* This is used for the profile image silhoutte */
 img {
   width: 30px;
 }
@@ -75,6 +50,7 @@ details summary::-webkit-details-marker {
   border-radius: 5px;
 }
 
+/* This is for the details tag that contains all the event buttons of everyone of the user's lists */
 .menuTitle {
   display: flex;
   align-items: center;
@@ -85,6 +61,7 @@ details summary::-webkit-details-marker {
   margin: 0 10px 0 0;
 }
 
+/* This is for the logout button as well as for each of the user's list buttons */
 .clickableEvent {
   display: flex;
   justify-content: start;
@@ -124,6 +101,7 @@ textarea {
   border-style: solid;
 }
 
+/* This is for the entire list that is displayed */
 #listTable {
   display: flex;
   flex-direction: column;
@@ -131,7 +109,7 @@ textarea {
   align-items: center;
 }
 
-
+/* This is for the plus button that creates new lists on the top right of the profile page */
 #newListButton {
   border: none;
   color: whitesmoke;
@@ -147,6 +125,7 @@ textarea {
   padding: 7px 0 0 0;
 }
 
+/* This is the css for the title that appears above the displayed list */
 .listTitle {
   border: none;
   resize: none;
@@ -157,8 +136,42 @@ textarea {
   font-weight: 500;
   padding: 5px;}
 
-
-.hide{
+/* This is used to hide the div in the profile page that lets you name a newly created list */
+.hide {
   display: none;
 
+}
+/* The styling for the delete button of each row in a list */
+.rowDeleteBtn {
+  width: 30px;
+  background-color: #c90e0e ;
+  background-image: url('../images/Trash-Can-Clip-Art.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  padding: 3px;
+}
+
+.listRow {
+  display: flex;
+}
+
+/* This is for the project description on the homepage */
+.description {
+  color: black;
+  background-color: #47a603;
+  text-align: center;
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 10px;
+  width: 70vw;
+
+}
+
+/* This is a class used in multiple places to center the page contents */
+.centerContents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
