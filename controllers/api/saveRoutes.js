@@ -19,7 +19,6 @@ router.post('/', async (req, res) => {
       });
       await listItem.save();
     }
-    // pk;
     const lists = await Lists.findByPk(Number(title.listId));
     lists.set({
       title: title.title

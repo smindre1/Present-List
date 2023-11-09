@@ -158,7 +158,21 @@ textarea {
   padding: 5px;}
 
 
-.hide{
+.hide {
   display: none;
 
+}
+
+.rowDeleteBtn {
+  width: 30px;
+  background-color: red;
+  background-image: url('../images/Trash-Can-Clip-Art.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  padding: 3px;
+}
+
+.listRow {
+  display: flex;
 }

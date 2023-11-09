@@ -95,6 +95,14 @@ const buildListDisplay = async (id, selectedList) => {
     newElementFour.setAttribute('id', `date-${i}`);
     newElementFour.innerHTML = data[i].date;
     row.appendChild(newElementFour);
+    //Creates a delete button for each row, it will delete it's corresponding row
+    let newElementFive = document.createElement('button');
+    newElementFive.setAttribute('id', `deleteRowBtn${i}`);
+    newElementFive.setAttribute('class', 'rowDeleteBtn');
+    newElementFive.setAttribute('list-item', `${data[i].id}`);
+    row.appendChild(newElementFive);
+    const deleteButton = document.querySelector(`#deleteRowBtn${i}`);
+    deleteButton.addEventListener('click', deleteRow);
   }
   //Creates a save button for the selected list
   let saveBtn = document.createElement('button');
@@ -143,18 +151,19 @@ const addNewRow = async (event) => {
 
 //////////////////////////////////////
 const deleteRow = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
+  event.preventDefault();
+  const id = event.target.getAttribute('list-item');
+  const listId = document.querySelector('#listTitle');
+  const selectedList = listId.getAttribute('value');
+  const listNumber = listId.getAttribute('listid');
+  const response = await fetch(`/api/deleteListItem/${id}`, {
+    method: 'DELETE'
+  });
 
-    const response = await fetch(`/api/projects/${id}`, {
-      method: 'DELETE'
-    });
-
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert('Failed to delete project');
-    }
+  if (response.ok) {
+    buildListDisplay(listNumber, selectedList);
+  } else {
+    alert('Failed to delete project');
   }
 };
 
