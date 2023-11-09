@@ -1,5 +1,4 @@
 let createListSection = document.getElementById("createList")
-console.log(createListSection)
 const showListSection = async (event) => {
 
  
@@ -10,7 +9,7 @@ const showListSection = async (event) => {
 };
 const saveNewList = async (event) =>{
   event.preventDefault();
-  console.log("in the createnewlist!!!")
+  // console.log("in the createnewlist!!!")
   let inputValue = document.getElementById("listValue")
   console.log(inputValue.value)
   const response = await fetch('/api/newList', {
