@@ -41,8 +41,6 @@ Once you select your list, click "add row" button to add a row to the list.
 - If you wish to log out, simply click on the user icon on the top left which displays your username and a logout button will appear.
 
 
-## Usage
-
 The following images show the web application's appearance and functionality:
 
 ![Homepage.](./public/images/homepage.png)
