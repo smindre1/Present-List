@@ -1,13 +1,28 @@
+:root {
+  --base-white: #ddd;
+  --basic-red: #d84922;
+  --basic-green: #59a976;
+  --bright-green: #47a603;
+  --basic-yellow: #f4ce1f;
+}
+
 body {
   background-color: #107d01;
   margin: 0px;
+  background-image: url(../images/patchwork-pattern.svg);
+  /* background-image: url(../images/pattern.svg); */
 }
 
 footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10vh;
+  margin: 10vh auto 10px auto;
+  color: var(--base-white);
+  padding: 4px;
+  background-color: #107d0195;
+  width: fit-content;
+  border-radius: 10px;
 }
 
 header {
@@ -16,6 +31,7 @@ header {
   align-items: baseline;
   justify-content: space-between;
   padding: 0px 40px 0px 5px;
+  background-color: var(--basic-green);
 }
 /* This is used for the profile image silhoutte */
 img {
@@ -75,7 +91,7 @@ a:link,
 a:visited {
   color: whitesmoke;
   text-decoration: none;
-  cursor: auto;
+  /* cursor: auto; */
   font-weight: bold;
   font-size: 18px;
 }
@@ -158,14 +174,50 @@ textarea {
 
 /* This is for the project description on the homepage */
 .description {
-  color: black;
-  background-color: #47a603;
-  text-align: center;
-  font-size: 18px;
-  padding: 12px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--basic-green);
   border-radius: 10px;
   width: 70vw;
+  min-height: fit-content;
+  height: 50vh;
+  border: solid 6px var(--bright-green);
+  padding: 20px 0 0 0;
+  z-index: 100;
+}
 
+.descriptionText {
+  color: var(--base-white);
+  font-size: 18px;
+  margin: 10px;
+  text-align: center;
+  font-size: 26px;
+}
+
+.descriptionBlurb {
+  color: black;
+  /* text-align: center; */
+  font-size: 18px;
+  margin: 12px;
+}
+
+em {
+  text-decoration: underline;
+  color: var(--basic-yellow);
+}
+
+.redirect {
+  cursor: pointer;
+}
+
+.redirect:hover {
+  color: var(--basic-yellow);
+}
+
+.redirectGroup {
+  display: flex;
+  margin: 40px 0 15px 0;
 }
 
 /* This is a class used in multiple places to center the page contents */
@@ -174,4 +226,77 @@ textarea {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.homepageTitle {
+ font-size: 48px; 
+ padding: 10px;
+ position: absolute;
+ margin: 15px 100px 15px 15px;
+ border-bottom: var(--basic-red) dashed 2px;
+ border-top: var(--basic-red) dashed 2px;
+}
+
+.oleo-script {
+  font-family: "Oleo Script", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.titleImg {
+  width: 525px;
+  position: absolute;
+  z-index: -10;
+  margin: 0 20px 0 0;
+}
+
+.titleGroup {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 5vw 10px 10px 10px;
+  height: 150px;
+  width: 500px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* .titleGroup:hover {
+    transform: translateX(40px);
+    animation: shake-tag both;
+    animation-timing-function: ease-in-out;
+    animation-timeline: view();
+    animation-range: cover 30 cover 20;
+    padding: 10vw 20vw 10vw 0;
+    animation-delay: 2s;
+    animation-duration: 8s;
+    z-index: -1000;
+  }
+
+  @keyframes shake-tag {
+    0% {
+      rotate: 45deg;
+    }
+    50% {
+      rotate: -45deg;
+    }
+    100% {
+      rotate: 45deg;
+    }
+  } */
+
+  .titleGroup:hover {
+    animation: shake 0.5s ease-in-out 0s infinite alternate;
+    cursor: pointer;
+  }
+
+  @keyframes shake{
+    from{
+      transform: rotate(0deg);
+    }
+    to{
+      transform: rotate(15deg);
+      transform-origin: center center;
+    }
+  }
+
 }

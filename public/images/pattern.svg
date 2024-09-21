@@ -1,0 +1,41 @@
+<svg width="124" height="124" viewBox="0 0 124 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_25_1835" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="124" height="124">
+<path d="M0 124H62H124V62V0H62H0V62V124Z" fill="#10593E"/>
+</mask>
+<g mask="url(#mask0_25_1835)">
+<path d="M0 124H62H124V62V0H62H0V62V124Z" fill="#10593E"/>
+<circle cy="93" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<circle cx="31" cy="124" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<rect x="-16.2929" y="123.971" width="23" height="23" transform="rotate(-45 -16.2929 123.971)" stroke="#C8A50A"/>
+<circle cx="31" cy="93" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<rect x="14.7071" y="97.9706" width="23" height="23" transform="rotate(-45 14.7071 97.9706)" stroke="#C8A50A"/>
+<rect x="14.7071" y="87.9706" width="23" height="23" transform="rotate(-45 14.7071 87.9706)" stroke="#C8A50A"/>
+<rect x="-16.2929" y="-0.0294189" width="23" height="23" transform="rotate(-45 -16.2929 -0.0294189)" stroke="#C8A50A"/>
+<circle cx="31" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<circle cy="31" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<circle cx="31" cy="62" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<rect x="-16.2929" y="61.9706" width="23" height="23" transform="rotate(-45 -16.2929 61.9706)" stroke="#C8A50A"/>
+<circle cx="31" cy="31" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<rect x="14.7071" y="35.9706" width="23" height="23" transform="rotate(-45 14.7071 35.9706)" stroke="#C8A50A"/>
+<rect x="14.7071" y="25.9706" width="23" height="23" transform="rotate(-45 14.7071 25.9706)" stroke="#C8A50A"/>
+<circle cx="124" cy="93" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<circle cx="62" cy="93" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<circle cx="93" cy="124" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<rect x="45.7071" y="123.971" width="23" height="23" transform="rotate(-45 45.7071 123.971)" stroke="#C8A50A"/>
+<rect x="107.707" y="123.971" width="23" height="23" transform="rotate(-45 107.707 123.971)" stroke="#C8A50A"/>
+<circle cx="93" cy="93" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<rect x="76.7071" y="97.9706" width="23" height="23" transform="rotate(-45 76.7071 97.9706)" stroke="#C8A50A"/>
+<rect x="76.7071" y="87.9706" width="23" height="23" transform="rotate(-45 76.7071 87.9706)" stroke="#C8A50A"/>
+<rect x="45.7071" y="-0.0294189" width="23" height="23" transform="rotate(-45 45.7071 -0.0294189)" stroke="#C8A50A"/>
+<rect x="107.707" y="-0.0294189" width="23" height="23" transform="rotate(-45 107.707 -0.0294189)" stroke="#C8A50A"/>
+<circle cx="124" cy="31" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<circle cx="93" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<circle cx="62" cy="31" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<circle cx="93" cy="62" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<rect x="45.7071" y="61.9706" width="23" height="23" transform="rotate(-45 45.7071 61.9706)" stroke="#C8A50A"/>
+<rect x="107.707" y="61.9706" width="23" height="23" transform="rotate(-45 107.707 61.9706)" stroke="#C8A50A"/>
+<circle cx="93" cy="31" r="7.75" stroke="#C8A50A" stroke-width="0.5"/>
+<rect x="76.7071" y="35.9706" width="23" height="23" transform="rotate(-45 76.7071 35.9706)" stroke="#C8A50A"/>
+<rect x="76.7071" y="25.9706" width="23" height="23" transform="rotate(-45 76.7071 25.9706)" stroke="#C8A50A"/>
+</g>
+</svg>
