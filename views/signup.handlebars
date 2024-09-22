@@ -1,25 +1,26 @@
-<div class="card">
-  <div class="card-header">
-    <h2>Sign Up</h2>
+<div class="portalCard">
+  <div class="portalCardHeader card-body">
+    <h2 class="color-bg">Sign Up</h2>
   </div>
   <div id="signup" role="tabpanel">
     <form id="signup-form" class="card-body">
-      <div>
-        <label for="username-input-signup">Username</label>
+      <div class="inputGroup">
+        <label class="color-by" for="username-input-signup">Username</label>
         <input type="text" id="username-input-signup" />
       </div>
-       <div>
-        <label for="username-input-signup">Email</label>
+       <div class="inputGroup">
+        <label class="color-by" for="username-input-signup">Email</label>
         <input type="email" id="email-signup" />
       </div>
-      <div>
-        <label for="password-input-signup">Password</label>
+      <div class="inputGroup">
+        <label class="color-by" for="password-input-signup">Password</label>
         <input type="password" id="password-signup" />
       </div>
-      <button type="submit" id="signup-btn" class="btn" >Signup!</button>
-      <a href="/login">Login instead</a>
+      <button type="submit" id="signup-btn" class="portalBtn" >Signup!</button>
+      <a class="portalLink" href="/login">Login instead</a>
     </form>
   </div>
 </div>
 
 <script src="/js/signup.js"></script>
+<link rel="stylesheet" href="./css/jass.css">

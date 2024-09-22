@@ -3,11 +3,12 @@
   --basic-red: #d84922;
   --basic-green: #59a976;
   --bright-green: #47a603;
+  --dark-green: #10593E;
   --basic-yellow: #f4ce1f;
 }
 
 body {
-  background-color: #107d01;
+  background-color: var(--dark-green);
   margin: 0px;
   background-image: url(../images/patchwork-pattern.svg);
   /* background-image: url(../images/pattern.svg); */
@@ -92,14 +93,7 @@ a:visited {
   color: whitesmoke;
   text-decoration: none;
   /* cursor: auto; */
-  font-weight: bold;
   font-size: 18px;
-}
-/* The default css for the clicked <a> html tag are being redefined for asthetics */
-a:link:active,
-a:visited:active {
-  color: (internal value);
-  font-weight: normal;
 }
 
 /* The column title spaces for each list */
@@ -260,30 +254,6 @@ em {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* .titleGroup:hover {
-    transform: translateX(40px);
-    animation: shake-tag both;
-    animation-timing-function: ease-in-out;
-    animation-timeline: view();
-    animation-range: cover 30 cover 20;
-    padding: 10vw 20vw 10vw 0;
-    animation-delay: 2s;
-    animation-duration: 8s;
-    z-index: -1000;
-  }
-
-  @keyframes shake-tag {
-    0% {
-      rotate: 45deg;
-    }
-    50% {
-      rotate: -45deg;
-    }
-    100% {
-      rotate: 45deg;
-    }
-  } */
-
   .titleGroup:hover {
     animation: shake 0.5s ease-in-out 0s infinite alternate;
     cursor: pointer;
@@ -299,4 +269,64 @@ em {
     }
   }
 
+}
+
+.portalCard {
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto 20px auto;
+  min-width: 220px;
+  width: 20vw;
+  background-color: var(--dark-green);
+  padding: 60px 15px 90px 15px;
+  border: solid #0d0d0d 2px;
+  border-radius: 10px;
+}
+
+.card-body {
+  width: 190px;
+  margin: 0 auto 0 auto;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.portalBtn {
+  display: flex;
+  cursor: pointer;
+  padding: 0.5rem 1.2rem;
+  margin: 10px auto 0 auto;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: none;
+  background-color: var(--base-white);
+}
+
+.portalBtn:hover {
+  background-color: var(--basic-yellow);
+}
+
+.portalLink {
+  display: flex;
+  margin: 10px auto 0 auto;
+  justify-content: center;
+  font-weight: 300;
+}
+
+.portalLink:hover {
+  color: var(--basic-yellow);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+/* Colors */
+
+.color-bg {
+  color: var(--basic-green);
+}
+
+.color-by {
+  color: var(--basic-yellow);
 }
