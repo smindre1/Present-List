@@ -34,6 +34,8 @@ const buildListDisplay = async (id, selectedList) => {
   const data = await getListData(id);
 
   const table = document.querySelector('#listTable');
+  table.setAttribute('class', 'pad');
+  table.classList.add('pad');
   //Clears any previous list displayed
   clearList();
 

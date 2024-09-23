@@ -1,12 +1,3 @@
-let createListSection = document.getElementById("createList")
-const showListSection = async (event) => {
-
- 
-  console.log(createListSection)
-  createListSection.classList.remove("hide")
-  var saveButton = document.getElementById("saveList")
-  saveButton.addEventListener("click", saveNewList)
-};
 const saveNewList = async (event) =>{
   event.preventDefault();
   // console.log("in the createnewlist!!!")
@@ -19,7 +10,6 @@ const saveNewList = async (event) =>{
   });
 
   if (response.ok) {
-    createListSection.classList.add("hide")
     document.location.replace('/profile');
   } else {
     alert(response.statusText);
@@ -27,5 +17,5 @@ const saveNewList = async (event) =>{
 }
 
 document
-  .querySelector('#newListButton')
-  .addEventListener('click', showListSection);
+  .querySelector('#saveList')
+  .addEventListener('click', saveNewList);

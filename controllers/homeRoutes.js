@@ -37,14 +37,15 @@ router.get('/profile', withAuth, async (req, res) => {
       lists = everyList;
     });
 
-    console.dir('Lists Data (homeRoutes.js):');
-    console.dir(lists);
+    // console.dir('Lists Data (homeRoutes.js):');
+    // console.dir(lists);
 
     const userData = await Users.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] }
     });
 
     const user = userData.get({ plain: true });
+
     // console.dir('User Data (homeRoutes.js):');
     // console.dir(user);
     // console.dir('-------------------------------');
@@ -74,6 +75,10 @@ router.get('/List/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});
+
+router.get('/newlist', async (req, res) => {
+  res.render('newlist');
 });
 
 module.exports = router;
