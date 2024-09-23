@@ -1,11 +1,13 @@
 const saveNewList = async (event) =>{
   event.preventDefault();
-  // console.log("in the createnewlist!!!")
   let inputValue = document.getElementById("listValue")
-  console.log(inputValue.value)
+
+  let title;
+  inputValue.value.length > 0 ? title = inputValue.value : title = 'Untitled';
+
   const response = await fetch('/api/newList', {
     method: 'POST',
-    body: JSON.stringify({ title: inputValue.value}),
+    body: JSON.stringify({ title }),
     headers: { 'Content-Type': 'application/json' }
   });
 

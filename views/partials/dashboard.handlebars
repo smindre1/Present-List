@@ -7,11 +7,12 @@
     </summary>
     <a class="logoutBtn" href="#" id="logout">Logout</a>
 </details>
+
 <h1 class="headerTitle oleo-script">The Present List</h1>
 <div class="flexRow">
-    <a href="/newlist" id="newListButton">+</a>
+    <a href="/newlist" id="newListButton" title="Create New List">+</a>
     
-    <details class="listSelection menuDisplay">
+    <details class="listSelection menuDisplay" title="View Your Lists">
         <summary class="menuTitle">Lists</summary>
         <div class="listsDropdown">
             {{#each lists}}

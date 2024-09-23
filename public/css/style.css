@@ -1,11 +1,15 @@
 :root {
   --base-white: #ddd;
+  --bright-white: #f0f0f0;
   --basic-red: #d84922;
+  --dark-red: #983418;
   --basic-green: #59a976;
   --bright-green: #47a603;
   --dark-green: #10593E;
+  --neon-green: #38cf4c;
   --basic-yellow: #f4ce1f;
   --black: #0d0d0d;
+  --grey: #767676;
 }
 
 body {
@@ -40,7 +44,7 @@ header {
 }
 
 .headerTitle {
-  margin-left: 100px;
+  margin-left: 125px;
 }
 
 .thing {
@@ -103,7 +107,7 @@ details summary::-webkit-details-marker {
 .menuDisplay {
   position: relative;
   display: inline-block;
-  background-color: #38cf4c;
+  background-color: var(--neon-green);
   border-radius: 5px;
   cursor: pointer;
 }
@@ -176,6 +180,7 @@ textarea {
   display: flex;
   flex-direction: column;
   width: fit-content;
+  border-radius: 5px;
   margin: 0 auto;
   background-color: var(--bright-green);
 }
@@ -221,12 +226,68 @@ textarea {
 /* The styling for the delete button of each row in a list */
 .rowDeleteBtn {
   width: 30px;
-  background-color: var(--basic-red) ;
-  background-image: url('../images/Trash-Can-Clip-Art.png');
+  background-color: var(--basic-green) ;
+  color: var(--dark-green);
   background-size: contain;
   background-repeat: no-repeat;
   background-origin: content-box;
   padding: 3px;
+  cursor: pointer;
+  /* Border none is there to remove the default border */
+  border: none;
+  border-bottom: 5px solid var(--dark-green);
+}
+
+.rowDeleteBtn:hover {
+  background-color: var(--dark-green);
+  color: var(--neon-green);
+}
+
+.delList {
+  background-color: var(--basic-red);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.delList:hover {
+  background-color: var(--dark-red);
+  color: var(--bright-white);
+}
+
+.saveBtn {
+  /* border: 1px solid var(--grey);
+  border-radius: 2px; */
+  background-color: var(--base-white);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.saveBtn:hover {
+  background-color: var(--bright-white);
+}
+
+.saveBtn:active {
+  background-color: var(--basic-yellow);
+}
+
+.newRowBtn {
+  background-color: var(--base-white);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.newRowBtn:hover {
+  background-color: var(--bright-white);
+}
+
+.newRowBtn:active {
+  background-color: var(--basic-yellow);
+}
+
+#btnGroup {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 15px 5px;
 }
 
 .listRow {
