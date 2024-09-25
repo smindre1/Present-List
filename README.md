@@ -27,7 +27,7 @@ This is a holiday organizer. On this application you are able to create multiple
 - If you would like, you can seed the database by creating a demo user. This can be done by running the code within the seed.sql file, located in the db folder.
 - Now, the 'MySQL Connection'/'instance' that holds your database should be running on a specific port. It is normally displayed before you click on the 'instance'. For us it was 3306, yours may be the same or it may be different. If it is different you will need to enter the connection.js file located in the config folder, and on line 16 replace the number for "port" with your own.
 - If you are running it locally you will also need to create a .env and in it assign values to the keys DB_NAME, DB_PASSWORD, DB_USER, and SESS_SECRET. The DB_NAME will be the name of the database you created. If you ran the code in schema.sql within Workbench or your platform, then the database's name will be 'present_db'. So, you would set DB_NAME='present_db'. The DB_PASSWORD and DB_USER will be what you set as the password and username for your 'MySQL Connection'/'instance'. Lastly, the SESS_SECRET can be set to any string. It is simply an identifier for the session that your database uses.
-- If you are planning on deploying the app, then you will need to make sure your .env values are included some hosting sites like Heroku will need you to set these up in the config settings of the deployed app.
+- If you are planning on deploying the app, then you will need to make sure your .env values are included on your hosting site's settings. Some hosting sites like Heroku will need you to set these up in the config settings of the deployed app.
 
 ## Usage
 
@@ -71,6 +71,7 @@ For this project we utilized Node.js, using the npm packages:
 - express-handlebars: 5.2.0
 - express-session: 1.18.1
 - mysql2: 3.11.3
+- long: 5.2.3 (A necessary package, used by mysql2's package)
 - sequelize: 6.37.3
 
 ## License
