@@ -34,6 +34,8 @@ const buildListDisplay = async (id, selectedList) => {
   const data = await getListData(id);
 
   const table = document.querySelector('#listTable');
+  table.setAttribute('class', 'pad');
+  table.classList.add('pad');
   //Clears any previous list displayed
   clearList();
 
@@ -97,32 +99,19 @@ const buildListDisplay = async (id, selectedList) => {
     let newElementFive = document.createElement('button');
     newElementFive.setAttribute('id', `deleteRowBtn${i}`);
     newElementFive.setAttribute('class', 'rowDeleteBtn');
+    newElementFive.setAttribute('title', 'Delete This Row');
     newElementFive.setAttribute('list-item', `${data[i].id}`);
+    newElementFive.innerHTML = 'X';
     row.appendChild(newElementFive);
     const deleteButton = document.querySelector(`#deleteRowBtn${i}`);
     deleteButton.addEventListener('click', deleteRow);
   }
-  //Creates a save button for the selected list
-  let saveBtn = document.createElement('button');
-  saveBtn.setAttribute('id', 'saveBtn');
-  saveBtn.setAttribute('class', `saveBtn`);
-  saveBtn.setAttribute('NumOfRows', `${data.length}`);
-  saveBtn.innerHTML = 'Save';
-  table.appendChild(saveBtn);
 
-  const saveButton = document.querySelector('#saveBtn');
-  saveButton.addEventListener('click', saveCurrentList);
-
-  //Creates a button that makes new rows for the current list
-  let newRow = document.createElement('button');
-  newRow.setAttribute('id', 'newRowBtn');
-  newRow.setAttribute('class', `newRowBtn`);
-  newRow.setAttribute('listId', `${id}`);
-  newRow.innerHTML = 'New Row';
-  table.appendChild(newRow);
-
-  const newRowBtn = document.querySelector('#newRowBtn');
-  newRowBtn.addEventListener('click', addNewRow);
+  //Creates a <div> for the list buttons
+  let btnDiv = document.createElement('div');
+  btnDiv.setAttribute('id', 'btnGroup');
+  table.appendChild(btnDiv);
+  const btnGroup = document.querySelector('#btnGroup');
 
   //Creates a button that delete the current list
   let delList = document.createElement('button');
@@ -130,15 +119,40 @@ const buildListDisplay = async (id, selectedList) => {
   delList.setAttribute('class', 'delList');
   delList.setAttribute('listId', `${id}`);
   delList.innerHTML = 'Delete Current List';
-  table.appendChild(delList);
+  btnGroup.appendChild(delList);
 
   const deleteList = document.querySelector('#delList');
   deleteList.addEventListener('click', deleteCurrentList);
+
+  //Creates a button that makes new rows for the current list
+  let newRow = document.createElement('button');
+  newRow.setAttribute('id', 'newRowBtn');
+  newRow.setAttribute('class', `newRowBtn`);
+  newRow.setAttribute('listId', `${id}`);
+  newRow.setAttribute('NumOfRows', `${data.length}`);
+  newRow.innerHTML = 'New Row';
+  btnGroup.appendChild(newRow);
+
+  const newRowBtn = document.querySelector('#newRowBtn');
+  newRowBtn.addEventListener('click', addNewRow);
+
+  //Creates a save button for the selected list
+  let saveBtn = document.createElement('button');
+  saveBtn.setAttribute('id', 'saveBtn');
+  saveBtn.setAttribute('class', `saveBtn`);
+  saveBtn.setAttribute('NumOfRows', `${data.length}`);
+  saveBtn.innerHTML = 'Save Changes';
+  btnGroup.appendChild(saveBtn);
+
+  const saveButton = document.querySelector('#saveBtn');
+  saveButton.addEventListener('click', saveCurrentList);
 };
 
 //The function to add a new row to the current list
 const addNewRow = async (event) => {
   event.preventDefault();
+  //Saves any changes so they are not reset
+  saveCurrentList(event);
   const listId = document.querySelector('#listTitle');
   const selectedList = listId.getAttribute('value');
   const listNumber = listId.getAttribute('listid');

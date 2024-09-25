@@ -1,7 +1,6 @@
 {
-  "name": "traveller-api",
+  "name": "present-list-application",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,19 +12,19 @@
   "license": "ISC",
   "dependencies": {
     "connect-session-sequelize": "^7.0.4",
-    "dotenv": "^8.6.0",
-    "express": "^4.17.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
     "express-handlebars": "^5.2.0",
-    "express-session": "^1.17.1",
-    "mysql2": "^2.2.1",
-    "sequelize": "^6.3.5"
+    "express-session": "^1.18.0",
+    "mysql2": "^3.11.3",
+    "sequelize": "^6.37.3"
   },
   "devDependencies": {
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "nodemon": "^2.0.4",
+    "nodemon": "^3.1.7",
     "prettier": "^1.19.1"
   }
 }

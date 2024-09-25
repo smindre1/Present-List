@@ -1,25 +1,17 @@
-let createListSection = document.getElementById("createList")
-const showListSection = async (event) => {
-
- 
-  console.log(createListSection)
-  createListSection.classList.remove("hide")
-  var saveButton = document.getElementById("saveList")
-  saveButton.addEventListener("click", saveNewList)
-};
 const saveNewList = async (event) =>{
   event.preventDefault();
-  // console.log("in the createnewlist!!!")
   let inputValue = document.getElementById("listValue")
-  console.log(inputValue.value)
+
+  let title;
+  inputValue.value.length > 0 ? title = inputValue.value : title = 'Untitled';
+
   const response = await fetch('/api/newList', {
     method: 'POST',
-    body: JSON.stringify({ title: inputValue.value}),
+    body: JSON.stringify({ title }),
     headers: { 'Content-Type': 'application/json' }
   });
 
   if (response.ok) {
-    createListSection.classList.add("hide")
     document.location.replace('/profile');
   } else {
     alert(response.statusText);
@@ -27,5 +19,5 @@ const saveNewList = async (event) =>{
 }
 
 document
-  .querySelector('#newListButton')
-  .addEventListener('click', showListSection);
+  .querySelector('#saveList')
+  .addEventListener('click', saveNewList);

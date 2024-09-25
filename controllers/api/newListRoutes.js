@@ -5,7 +5,6 @@ const { Lists } = require('../../models');
 router.post('/', async (req, res) => {
   try {
     const listBody = Object.assign(req.body, {user_id: req.session.user_id})
-    console.log(listBody);
     const newList = await Lists.create(listBody);
       res.status(200).json(newList);
 

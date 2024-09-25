@@ -1,22 +1,67 @@
+:root {
+  --base-white: #ddd;
+  --bright-white: #f0f0f0;
+  --basic-red: #d84922;
+  --dark-red: #983418;
+  --basic-green: #59a976;
+  --bright-green: #47a603;
+  --dark-green: #10593E;
+  --neon-green: #38cf4c;
+  --basic-yellow: #f4ce1f;
+  --black: #0d0d0d;
+  --grey: #767676;
+}
+
 body {
-  background-color: #107d01;
+  background-color: var(--dark-green);
   margin: 0px;
+  background-image: url(../images/patchwork-pattern.svg);
+  overflow: auto;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+main {
+  min-height: 100vh;
 }
 
 footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10vh;
+  margin: 10vh auto 10px auto;
+  color: var(--base-white);
+  padding: 4px;
+  background-color: #107d0195;
+  width: fit-content;
+  border-radius: 10px;
 }
 
 header {
   box-shadow: 0px 0px 10px 2px darkgreen;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  padding: 0px 40px 0px 5px;
+  background-color: var(--basic-green);
+  height: 86px;
 }
+
+.headerTitle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.thing {
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+}
+
 /* This is used for the profile image silhoutte */
 img {
   width: 30px;
@@ -32,7 +77,30 @@ details {
 }
 
 .listSelection {
-  margin-left: 30px;
+  /* margin-left: 30px; */
+  margin: 0 119px 0 30px;
+}
+
+.listSelection[open] {
+  width: 160px;
+  margin: 0 10px 0 30px;
+}
+
+.listsDropdown {
+  position: absolute;
+}
+
+.listBtn {
+  display: block;
+  cursor: pointer;
+  padding: 5px 20px 5px 10px;
+  background-color: var(--bright-green);
+  width: 130px;
+}
+
+.listBtn:hover {
+  color: var(--base-white);
+ background-color: var(--dark-green);
 }
 
 /* Erases the arrows on html <detail> tags */
@@ -46,8 +114,20 @@ details summary::-webkit-details-marker {
 
 /* Creates the display for html <details> tags initial display */
 .menuDisplay {
-  background-color: #38cf4c;
+  position: relative;
+  display: inline-block;
+  background-color: var(--neon-green);
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.menuDisplay[open] {
+ border-radius: 5px 5px 0 0;
+}
+
+.profileDropdown {
+  width: fit-content;
+  margin: 0 0 0 5px;
 }
 
 /* This is for the details tag that contains all the event buttons of everyone of the user's lists */
@@ -56,18 +136,27 @@ details summary::-webkit-details-marker {
   align-items: center;
   padding: 10px;
 }
+
+.menuTitle:hover {
+  background-color: var(--dark-green);
+}
+
 /* The css for the profile image silhoutte displayed on the top left of the profile page */
 .profileImage {
   margin: 0 10px 0 0;
 }
 
-/* This is for the logout button as well as for each of the user's list buttons */
-.clickableEvent {
-  display: flex;
-  justify-content: start;
-  align-items: start;
+.logoutBtn {
+  display: block;
+  position: absolute;
   padding: 5px 20px 5px 10px;
-  background-color: #47a603;
+  background-color: var(--bright-green);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.logoutBtn:hover {
+ background-color: var(--dark-green);
 }
 
 /* The default css for the <a> html tag are being redefined for asthetics */
@@ -75,22 +164,17 @@ a:link,
 a:visited {
   color: whitesmoke;
   text-decoration: none;
-  cursor: auto;
-  font-weight: bold;
+  /* cursor: auto; */
   font-size: 18px;
-}
-/* The default css for the clicked <a> html tag are being redefined for asthetics */
-a:link:active,
-a:visited:active {
-  color: (internal value);
-  font-weight: normal;
 }
 
 /* The column title spaces for each list */
 #column-title {
   margin: 0;
+  padding: 0 30px 0 10px;
   width: 128.5px;
-  background-color: #47a603;
+  background-color: var(--dark-green);
+  color: var(--base-white);
   display: flex;
   justify-content: start;
 }
@@ -105,8 +189,14 @@ textarea {
 #listTable {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: fit-content;
+  border-radius: 5px;
+  margin: 0 auto;
+  background-color: var(--bright-green);
+}
+
+.pad {
+  padding: 15px;
 }
 
 /* This is for the plus button that creates new lists on the top right of the profile page */
@@ -129,12 +219,14 @@ textarea {
 .listTitle {
   border: none;
   resize: none;
-  background-color: #47a603;
+  background-color: var(--dark-green);
+  color: var(--basic-yellow);
   text-align: center;
   margin: 0 0 15px 0;
   font-size: 32px;
   font-weight: 500;
-  padding: 5px;}
+  padding: 5px;
+}
 
 /* This is used to hide the div in the profile page that lets you name a newly created list */
 .hide {
@@ -144,12 +236,68 @@ textarea {
 /* The styling for the delete button of each row in a list */
 .rowDeleteBtn {
   width: 30px;
-  background-color: #c90e0e ;
-  background-image: url('../images/Trash-Can-Clip-Art.png');
+  background-color: var(--basic-green) ;
+  color: var(--dark-green);
   background-size: contain;
   background-repeat: no-repeat;
   background-origin: content-box;
   padding: 3px;
+  cursor: pointer;
+  /* Border none is there to remove the default border */
+  border: none;
+  border-bottom: 5px solid var(--dark-green);
+}
+
+.rowDeleteBtn:hover {
+  background-color: var(--dark-green);
+  color: var(--neon-green);
+}
+
+.delList {
+  background-color: var(--basic-red);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.delList:hover {
+  background-color: var(--dark-red);
+  color: var(--bright-white);
+}
+
+.saveBtn {
+  /* border: 1px solid var(--grey);
+  border-radius: 2px; */
+  background-color: var(--base-white);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.saveBtn:hover {
+  background-color: var(--bright-white);
+}
+
+.saveBtn:active {
+  background-color: var(--basic-yellow);
+}
+
+.newRowBtn {
+  background-color: var(--base-white);
+  cursor: pointer;
+  width: fit-content;
+}
+
+.newRowBtn:hover {
+  background-color: var(--bright-white);
+}
+
+.newRowBtn:active {
+  background-color: var(--basic-yellow);
+}
+
+#btnGroup {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 15px 5px;
 }
 
 .listRow {
@@ -158,14 +306,50 @@ textarea {
 
 /* This is for the project description on the homepage */
 .description {
-  color: black;
-  background-color: #47a603;
-  text-align: center;
-  font-size: 18px;
-  padding: 12px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--basic-green);
   border-radius: 10px;
   width: 70vw;
+  min-height: fit-content;
+  height: 50vh;
+  border: solid 6px var(--bright-green);
+  padding: 20px 0 0 0;
+  z-index: 100;
+}
 
+.descriptionText {
+  color: var(--base-white);
+  font-size: 18px;
+  margin: 10px;
+  text-align: center;
+  font-size: 26px;
+}
+
+.descriptionBlurb {
+  color: black;
+  /* text-align: center; */
+  font-size: 18px;
+  margin: 12px;
+}
+
+em {
+  text-decoration: underline;
+  color: var(--basic-yellow);
+}
+
+.redirect {
+  cursor: pointer;
+}
+
+.redirect:hover {
+  color: var(--basic-yellow);
+}
+
+.redirectGroup {
+  display: flex;
+  margin: 40px 0 15px 0;
 }
 
 /* This is a class used in multiple places to center the page contents */
@@ -174,4 +358,113 @@ textarea {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.homepageTitle {
+ font-size: 48px; 
+ padding: 10px;
+ position: absolute;
+ margin: 15px 100px 15px 15px;
+ border-bottom: var(--basic-red) dashed 2px;
+ border-top: var(--basic-red) dashed 2px;
+}
+
+.oleo-script {
+  font-family: "Oleo Script", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.titleImg {
+  width: 525px;
+  position: absolute;
+  z-index: -10;
+  margin: 0 20px 0 0;
+}
+
+.titleGroup {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 5vw 10px 10px 10px;
+  height: 150px;
+  width: 500px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .titleGroup:hover {
+    animation: shake 0.5s ease-in-out 0s infinite alternate;
+    cursor: pointer;
+  }
+
+  @keyframes shake{
+    from{
+      transform: rotate(0deg);
+    }
+    to{
+      transform: rotate(15deg);
+      transform-origin: center center;
+    }
+  }
+
+}
+
+.portalCard {
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto 20px auto;
+  min-width: 220px;
+  width: 20vw;
+  background-color: var(--dark-green);
+  padding: 60px 15px 90px 15px;
+  border: solid var(--black) 2px;
+  border-radius: 10px;
+}
+
+.card-body {
+  width: 190px;
+  margin: 0 auto 0 auto;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.portalBtn {
+  display: flex;
+  cursor: pointer;
+  padding: 0.5rem 1.2rem;
+  margin: 10px auto 0 auto;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: none;
+  background-color: var(--base-white);
+}
+
+.portalBtn:hover {
+  background-color: var(--basic-yellow);
+}
+
+.portalLink {
+  display: flex;
+  margin: 10px auto 0 auto;
+  justify-content: center;
+  font-weight: 300;
+}
+
+.portalLink:hover {
+  color: var(--basic-yellow);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+/* Colors */
+
+.color-bg {
+  color: var(--basic-green);
+}
+
+.color-by {
+  color: var(--basic-yellow);
 }

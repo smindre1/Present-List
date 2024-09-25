@@ -2,7 +2,7 @@
 
 By Shane Mindreau, Affan Kamal, and Joseph Aro
 
-Deployed App With Heroku: [Present List App](https://present-list-fc60525bdd4f.herokuapp.com/profile)
+Deployed App With Heroku: [Present List App](https://present-list-fc60525bdd4f.herokuapp.com/)
 
 ## Description
 
@@ -12,6 +12,7 @@ This is a holiday organizer. On this application you are able to create multiple
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Mock Images](#mock-images)
 - [Credits](#credits)
 - [License](#license)
 - [Badges](#badges)
@@ -41,32 +42,36 @@ Once you select your list, click "add row" button to add a row to the list.
 - If you wish to log out, simply click on the user icon on the top left which displays your username and a logout button will appear.
 
 
-## Usage
+## Mock Images
 
 The following images show the web application's appearance and functionality:
 
-![Homepage.](./public/images/homepage.png)
+![Homepage](./public/images/homepage.png)
 
-![Signup.](./public/images/signup-page.png)
+<div style="display: flex; margin-bottom: 20px">
+  <img src="./public/images/signup-page.png" alt="Signup Portal" width="400" style="margin-right: 20px"/>
+  <img src="./public/images/login-page.png" alt="Login Portal" width="400" />
+</div>
 
-![Login.](./public/images/login-page.png)
+![Profile Page (1)](./public/images/profile-page-1.png)
 
-![Profile Page (1).](./public/images/profile-page-1.png)
+![Profile Page (2)](./public/images/profile-page-2.png)
 
-![Profile Page (2).](./public/images/profile-page-2.png)
-
-![Profile Page (3).](./public/images/profile-page-3.png)
+<div style="display: flex;">
+  <img src="./public/images/logout.png" alt="Logout Button" width="300" style="margin-right: 20px"/>
+  <img src="./public/images/menu-buttons.png" alt="Menu Buttons" width="400" />
+</div>
 
 ## Credits
 
 For this project we utilized Node.js, using the npm packages:
 - connect-session-sequelize, 7.0.4
-- dotenv: 8.6.0
-- express: 4.17.1
+- dotenv: 16.4.5
+- express: 4.21.0
 - express-handlebars: 5.2.0
-- express-session: 1.17.1
-- mysql2: 2.2.1
-- sequelize: 6.3.5
+- express-session: 1.18.1
+- mysql2: 3.11.3
+- sequelize: 6.37.3
 
 ## License
 
