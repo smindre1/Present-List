@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const mysql2 = require('mysql2'); // Needed to fix sequelize issues with WebPack
 require('dotenv').config();
 
 let sequelize;
@@ -13,6 +14,7 @@ if (process.env.JAWSDB_URL) {
     {
       host: 'localhost',
       dialect: 'mysql',
+      dialectModule: mysql2,
       port: 3306
     }
   );
