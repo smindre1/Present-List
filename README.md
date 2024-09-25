@@ -2,7 +2,7 @@
 
 By Shane Mindreau, Affan Kamal, and Joseph Aro
 
-Deployed App With Heroku: [Present List App](https://present-list-fc60525bdd4f.herokuapp.com/profile)
+Deployed App With Heroku: [Present List App](https://present-list-fc60525bdd4f.herokuapp.com/)
 
 ## Description
 
@@ -12,6 +12,7 @@ This is a holiday organizer. On this application you are able to create multiple
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Mock Images](#mock-images)
 - [Credits](#credits)
 - [License](#license)
 - [Badges](#badges)
@@ -41,7 +42,7 @@ Once you select your list, click "add row" button to add a row to the list.
 - If you wish to log out, simply click on the user icon on the top left which displays your username and a logout button will appear.
 
 
-## Usage
+## Mock Images
 
 The following images show the web application's appearance and functionality:
 
