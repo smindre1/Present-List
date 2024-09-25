@@ -16,7 +16,11 @@ body {
   background-color: var(--dark-green);
   margin: 0px;
   background-image: url(../images/patchwork-pattern.svg);
-  /* background-image: url(../images/pattern.svg); */
+  overflow: auto;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 main {
@@ -48,7 +52,8 @@ header {
   position: absolute;
   left: 0;
   right: 0;
-  text-align: center;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .thing {
