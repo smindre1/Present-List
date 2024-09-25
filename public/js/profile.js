@@ -129,6 +129,7 @@ const buildListDisplay = async (id, selectedList) => {
   newRow.setAttribute('id', 'newRowBtn');
   newRow.setAttribute('class', `newRowBtn`);
   newRow.setAttribute('listId', `${id}`);
+  newRow.setAttribute('NumOfRows', `${data.length}`);
   newRow.innerHTML = 'New Row';
   btnGroup.appendChild(newRow);
 
@@ -150,6 +151,8 @@ const buildListDisplay = async (id, selectedList) => {
 //The function to add a new row to the current list
 const addNewRow = async (event) => {
   event.preventDefault();
+  //Saves any changes so they are not reset
+  saveCurrentList(event);
   const listId = document.querySelector('#listTitle');
   const selectedList = listId.getAttribute('value');
   const listNumber = listId.getAttribute('listid');
